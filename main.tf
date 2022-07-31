@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.region
+  region = var.region
 }
 
 resource "aws_vpc" "hashicat" {
@@ -16,7 +16,7 @@ resource "aws_vpc" "hashicat" {
   enable_dns_hostnames = true
 
   tags = {
-    name = "${var.prefix}-vpc-${var.region}"
+    name        = "${var.prefix}-vpc-${var.region}"
     environment = "Production"
   }
 }
@@ -41,6 +41,7 @@ resource "aws_security_group" "hashicat" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
 
   ingress {
     from_port   = 80
